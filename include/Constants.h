@@ -1,1 +1,1 @@
-#define NUM_LEDS    1U
+#define NUM_LEDS    7U

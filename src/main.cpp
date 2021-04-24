@@ -11,7 +11,6 @@ void setup() {
   digitalWrite(LED_BUILTIN, HIGH);
 
   Serial.begin(9600);
-  Serial.setTimeout(2000);
   while (!Serial)
   {
   }
@@ -23,7 +22,7 @@ void setup() {
   digitalWrite(LED_BUILTIN, LOW);
 }
 
-void setColor(int red, int green, int blue)
+void setColor(const uint8_t address, const uint8_t red, const uint8_t green, const uint8_t blue)
 {
   while (r != red || g != green || b != blue)
   {
@@ -42,22 +41,28 @@ void setColor(int red, int green, int blue)
     if (b > blue)
       b -= 1;
 
-    led(r, g, b);
+    led(0, r, g, b);
+    led(1, r, g, b);
+    led(2, r, g, b);
+    led(3, r, g, b);
+    led(4, r, g, b);
+    led(5, r, g, b);
+    led(6, r, g, b);
     delay(30);
   }
 }
 
 void loop() {
-  setColor(255, 0, 0);   // red
+  setColor(0, 255, 0, 0);   // red
   Serial.println("red");
-  setColor(0, 255, 0);   // green
+  setColor(0, 0, 255, 0); // green
   Serial.println("green");
-  setColor(0, 0, 255);   // blue
+  setColor(0, 0, 0, 255); // blue
   Serial.println("blue");
-  setColor(255, 255, 0); // yellow
+  setColor(0, 255, 255, 0); // yellow
   Serial.println("yellow");
-  setColor(80, 0, 80);   // purple
+  setColor(0, 80, 0, 80); // purple
   Serial.println("purple");
-  setColor(0, 255, 255); // aqua
+  setColor(0, 0, 255, 255); // aqua
   Serial.println("aqua");
 }
